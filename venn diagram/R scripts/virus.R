@@ -1,5 +1,5 @@
 library(VennDiagram)
-data <- read.csv("VENN_VIRUS ONLY_combined-families.csv")
+data <- read.csv("virus.csv")
 
 a <- list(data$BOL) 
 b <- list(data$MzA) 
@@ -11,7 +11,7 @@ e <- lapply(b, function(z){ z[!is.na(z) & z != ""]})
 f <- lapply(c, function(z){ z[!is.na(z) & z != ""]})
 
 ##print each list then copy paste to a vector
-#print(d)
+#print(d/e/f)
 
 ## vectors
 set1 <- c("T4virus","P12002virus","Lambdavirus","P70virus","Slashvirus","P12024virus","M12virus",
@@ -27,13 +27,14 @@ set3 <- c("T4virus","P12002virus","Prasinovirus","Lambdavirus","Bxz1virus","P70v
           "Phicbkvirus","Kp36virus")
 
 v <- venn.diagram(list(BOL=set1, MzA=set2, MzB=set3), fill = c("red","blue","yellow"), alpha = c(0.5, 0.5, 0.5), filename=NULL)
-jpeg("VirusonlyVenn20231201_1.png")
+jpeg("virus.png")
 
 grid.newpage()
 grid.draw(v)
 dev.off()
 
 ## list overlap
+# change overlap to (set2,3) and (set1, set3) to get overlap for all sites
 overlap <- intersect(set1, set2)
 overlap
 cat(paste0(overlap, collapse = "\n"))
