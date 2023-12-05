@@ -1,5 +1,5 @@
 library(VennDiagram)
-data2 <- read.csv("VENN_EUKARYOTA ONLY_combined-families.csv")
+data2 <- read.csv("eukaryota.csv")
 
 g <- list(data2$BOL) 
 h <- list(data2$MzA) 
@@ -11,7 +11,7 @@ k <- lapply(h, function(z){ z[!is.na(z) & z != ""]})
 l <- lapply(i, function(z){ z[!is.na(z) & z != ""]})
 
 ##print each list then copy paste to a vector
-#print(j)
+#print(j/k/l)
 
 ## vectors
 set4 <- c("Trebouxiophyceae","Cymatosiraceae","Kareniaceae","Mamiellaceae","Picozoa","Protaspidae",
@@ -76,7 +76,7 @@ set6 <- c("Trebouxiophyceae","Bathycoccaceae","Cymatosiraceae","Kareniaceae","Ma
           "Dactylopodida","Sordariomycetes","DSGM-81")
 
 v2 <- venn.diagram(list(BOL=set4, MzA=set5, MzB=set6), fill = c("pink","green","purple"), alpha = c(0.5, 0.5, 0.5), filename=NULL)
-jpeg("EukaryotaonlyVenn20231201_1.png")
+jpeg("eukaryota.png")
 
 grid.newpage()
 grid.draw(v2)
