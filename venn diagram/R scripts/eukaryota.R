@@ -83,6 +83,7 @@ grid.draw(v2)
 dev.off()
 
 ## list overlap
+# change overlap to (set4,6) and (set5, set6) to get overlap for all sites
 overlap2 <- intersect(set4, set5)
 overlap2
 cat(paste0(overlap2, collapse = "\n"))
